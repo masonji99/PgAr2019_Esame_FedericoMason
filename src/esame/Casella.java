@@ -5,8 +5,13 @@ import java.util.Scanner;
 
 public class Casella {
 	
-	/*Ogni casella presenta il suo id, successivi ovvero la lista degli id a cui è collegata quella casella
-	 
+	/*Ogni casella presenta in ordine
+	   - il suo id
+	   - successivi ovvero la lista degli id a cui è collegata quella casella
+	   - l'eventuale danno da applicare
+	   - i messaggi collegati ad ogni associazione
+	   - la descrizione di quella casella
+	   - il tipo (empty, end, branch)
 	 * */
 	private int id;
 	private ArrayList<Integer> successivi;
