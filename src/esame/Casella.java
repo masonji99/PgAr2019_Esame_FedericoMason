@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Casella {
 	private int id;
-	private ArrayList<Casella> successivi;
+	private ArrayList<Integer> successivi;
 	private ArrayList<Integer> danni;
 	private ArrayList<String>messaggi;
 	private String descrizione;
 	private String tipo;
 	
-	public Casella(int id,String descrizione,String tipo,ArrayList<Casella> successivi,ArrayList<Integer> danni,ArrayList<String>messaggi) {
+	public Casella(int id,String descrizione,String tipo,ArrayList<Integer> successivi,ArrayList<Integer> danni,ArrayList<String>messaggi) {
 		this.id = id;
 		this.successivi = successivi;
 		this.danni = danni;
@@ -32,11 +32,16 @@ public class Casella {
 	public String getDesc() {
 		return descrizione;
 	}
-	
-	public ArrayList<Casella> getSucc() {
+	public ArrayList<Integer> getDanni() {
+		return danni;
+	}
+	public ArrayList<Integer> getSucc() {
 		return successivi;
 	}
 	public int getId() {
 		return id;
+	}
+	public ArrayList<String> getMessaggi(){
+		return messaggi;
 	}
 }

@@ -26,7 +26,7 @@ public class LetturaXML {
 		return xmlr;
 	}
 	
-	public void leggiXML() throws XMLStreamException {
+	public ArrayList<Casella> leggiXML() throws XMLStreamException {
 		ArrayList<Casella> caselle = new ArrayList<Casella>();
 		int id = 0;
 		String tipo = "",descrizione = "";
@@ -57,13 +57,13 @@ public class LetturaXML {
 				break ;
 				case XMLStreamConstants.END_ELEMENT:
 					if(xmlr.getLocalName().equals("cell")) {
-						Casella casella = new Casella(id,descrizione,tipo,successivi,danni,messaggi);
+						caselle.add(new Casella(id,descrizione,tipo,successivi,danni,messaggi));
 					}
 				break;
 				
 			}
-			
 			xmlr.next();
 		}
+		return caselle;
 	}
 }
