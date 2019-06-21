@@ -20,5 +20,7 @@ public class Mappa {
 	public Casella getAttuale() {
 		return attuale;
 	}
-	
+	public void setNumCaselle() {
+		numCaselle++;
+	}
 }

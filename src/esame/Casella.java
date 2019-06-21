@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Casella {
-	int id;
-	ArrayList<Casella> successivi;
-	String descrizione;
-	String tipo;
-	int dannoA, dannoB;
+	private int id;
+	private ArrayList<Casella> successivi;
+	private ArrayList<Integer> danno;
+	private String descrizione;
+	private String tipo;
 	
 	public Casella(int id,String descrizione,String tipo,int dannoA,int dannoB) {
 		this.id = id;
 		this.successivi = new ArrayList<Casella>();
 		this.descrizione = descrizione;
 		this.tipo = tipo;
-		this.dannoA = dannoA;
-		this.dannoB = dannoB;
 	}
 	public int getNumSucc() {
 		return successivi.size();
@@ -24,13 +22,18 @@ public class Casella {
 	public String getTipo() {
 		return tipo;
 	}
-	public int getEffetto() {
-		
-		getEffetto();
-		return 0;
+	public int getEffetto(int scelta) {
+		return danno.get(scelta);
 	}
 	
 	public String getDesc() {
 		return descrizione;
+	}
+	
+	public ArrayList<Casella> getSucc() {
+		return successivi;
+	}
+	public int getId() {
+		return id;
 	}
 }
