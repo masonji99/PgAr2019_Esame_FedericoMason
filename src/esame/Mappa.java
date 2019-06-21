@@ -19,7 +19,7 @@ public class Mappa {
 		numCaselle = INIZIALE;
 	}
 	public void start() {
-		System.out.println("Benvenuto in questo gioco di ruolo.\nIl tuo obbiettivo"
+		System.out.println("Benvenuto in questo gioco di ruolo.\nIl tuo obbiettivo "
 				+"sarà quello di arrivare in fondo al percorso con più vita possible.\nINIZIAMO!");
 	}
 	public Casella getAttuale() {

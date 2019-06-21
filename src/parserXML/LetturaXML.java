@@ -12,10 +12,12 @@ import javax.xml.stream.XMLStreamReader;
 public class LetturaXML {
 	XMLInputFactory xmlif = null;
 	XMLStreamReader xmlr = null;
-	String nomeFile = "fileXML/base.xml";
-	public LetturaXML() throws FileNotFoundException, XMLStreamException{
+	String nomeFile = "";
+	public LetturaXML(String nomeFile) throws FileNotFoundException, XMLStreamException {
+			this.nomeFile ="fileXML/".concat(nomeFile).trim();
+			System.out.println(this.nomeFile);
 			xmlif = XMLInputFactory.newInstance();
-			xmlr = xmlif.createXMLStreamReader(nomeFile,new FileInputStream(nomeFile));
+			xmlr = xmlif.createXMLStreamReader(this.nomeFile,new FileInputStream(this.nomeFile));
 	}
 	
 	public XMLInputFactory getXmlif() {
@@ -37,6 +39,8 @@ public class LetturaXML {
 			switch  (xmlr.getEventType()) {
 				case XMLStreamConstants.START_ELEMENT	:  // inizio di un elemento: stampa il nome del tag e i suoi attributi
 					if(xmlr.getLocalName().equals("cell")) {
+						successivi = new ArrayList<Integer>();
+						danni = new ArrayList<Integer>();
 						for(int i=0;i<xmlr.getAttributeCount();i++) {
 							if(xmlr.getAttributeLocalName(i).equals("id")) id = Integer.parseInt(xmlr.getAttributeValue(i));
 							else if(xmlr.getAttributeLocalName(i).equals("type")) tipo = xmlr.getAttributeValue(i);
@@ -45,8 +49,6 @@ public class LetturaXML {
 						if(xmlr.hasNext())xmlr.next();
 						descrizione = xmlr.getText().trim();
 					}else if(xmlr.getLocalName().equals("option")) {
-						successivi = new ArrayList<Integer>();
-						danni = new ArrayList<Integer>();
 						for(int i=0;i<xmlr.getAttributeCount();i++) {
 							if(xmlr.getAttributeLocalName(i).equals("destination")) successivi.add(Integer.parseInt(xmlr.getAttributeValue(i)));
 							else if(xmlr.getAttributeLocalName(i).equals("lifepoints")) danni.add(Integer.parseInt(xmlr.getAttributeValue(i)));
