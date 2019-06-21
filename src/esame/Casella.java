@@ -6,13 +6,16 @@ import java.util.Scanner;
 public class Casella {
 	private int id;
 	private ArrayList<Casella> successivi;
-	private ArrayList<Integer> danno;
+	private ArrayList<Integer> danni;
+	private ArrayList<String>messaggi;
 	private String descrizione;
 	private String tipo;
 	
-	public Casella(int id,String descrizione,String tipo,int dannoA,int dannoB) {
+	public Casella(int id,String descrizione,String tipo,ArrayList<Casella> successivi,ArrayList<Integer> danni,ArrayList<String>messaggi) {
 		this.id = id;
-		this.successivi = new ArrayList<Casella>();
+		this.successivi = successivi;
+		this.danni = danni;
+		this.messaggi = messaggi;
 		this.descrizione = descrizione;
 		this.tipo = tipo;
 	}
@@ -23,7 +26,7 @@ public class Casella {
 		return tipo;
 	}
 	public int getEffetto(int scelta) {
-		return danno.get(scelta);
+		return danni.get(scelta);
 	}
 	
 	public String getDesc() {

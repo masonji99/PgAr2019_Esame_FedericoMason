@@ -11,7 +11,7 @@ public class Personaggio {
 	}
 	
 	public void modificaVita(int vita) {
-		this.vita -= vita;
+		this.vita += vita;
 	}
 	
 	public int getVita() {

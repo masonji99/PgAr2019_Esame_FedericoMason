@@ -1,16 +1,29 @@
 package esame;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import javax.xml.stream.XMLStreamException;
+
+import parserXML.LetturaXML;
 
 
 public class GiocoDiRuolo {
 
 	public static void main(String[] args) {
+		try {
+			LetturaXML lettura = new LetturaXML();
+			lettura.leggiXML();
+			
+		}catch(Exception e ) {
+			e.getStackTrace();
+		}
+		/*
 		Personaggio personaggio = new Personaggio("Federico");
 		Mappa mappa = new Mappa(personaggio);
 		start(mappa,personaggio);
 		
-		System.out.println("Il gioco è terminato");
+		System.out.println("Il gioco è terminato");*/
 	}
 	public void creaPercorso() {
 		

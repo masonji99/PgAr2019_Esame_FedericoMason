@@ -8,8 +8,8 @@ public class Mappa {
 	Personaggio personaggio;
 	
 	public Mappa(Personaggio personaggio) {
-		iniziale = new Casella(INIZIALE,"ciao","danno",0,1);
-		attuale = new Casella(INIZIALE,"ciao","danno",0,1);
+		iniziale = new Casella(INIZIALE,"ciao","danno");
+		attuale = new Casella(INIZIALE,"ciao","danno");
 		numCaselle = INIZIALE;
 		this.personaggio = personaggio;
 	}
