@@ -1,17 +1,32 @@
 package esame;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+
 
 import parserXML.LetturaXML;
 
 
 public class GiocoDiRuolo {
 	private static Mappa mappa;
-	private final static String[]listaMappe = {"file.xml","base.xml"}; //lista da fare a mano dei file presenti nella cartella apposita
+	private static String[] listaMappe;
 	public static void main(String[] args) {
-		System.out.println("Ecco tutti i file dispondibili: \nNon tutti esistono solo i primi 2, solo per provare (Daniele ha confermato che va bene)");
+		File dir = new File("fileXML");
+		 String[] children = dir.list();
+		 listaMappe = new String[children.length];
+		 if (children == null) {
+		      System.out.println("Non sono presenti file nella directory =( ");
+		      return;
+		  } else {
+		      for (int i=0; i < children.length; i++) {
+		          // Get filename of file or directory
+		          listaMappe[i] = children[i];
+		      }
+		  }
+		System.out.println("Ecco tutti i file dispondibili:");
 		//visualizzazione dei vari file che si presume siano nella cartella, ordinati alfabeticamente (SPECIFICA 1,3 DEL MODULO A1)
 		System.out.println("---------------------");
 		Arrays.sort(listaMappe);
@@ -25,11 +40,14 @@ public class GiocoDiRuolo {
 		LetturaXML lettura = null;
 		int x = -1;
 			//ricerca del file (SPECIFICA 2 DEL MODULO A1)
-			System.out.print("vuoi cercare il file? (si per confermare) ");
+			System.out.print("vuoi cercare il file? (si per confermare): ");
 			String risposta = sc.nextLine().toLowerCase().trim();
+			String u = "Non è stata effettuata la ricerca per caratteri";
 			if(risposta.equals("si")|| risposta.equals("sì")) {
 				ricerca();
+				u = "";
 			}
+			System.out.println(u);
 		
 		do {
 			//selezione dell'utente (SPECIFICA 3 DEL MODULO A1) 
@@ -58,7 +76,9 @@ public class GiocoDiRuolo {
 		}catch(Exception e ) {
 		}
 		//creazione del personaggio e della mappa
-		Personaggio personaggio = new Personaggio("Federico");
+		System.out.println("COME SI CHIAMERA' IL TUO PERSONAGGIO?");
+		String nome = sc.nextLine();
+		Personaggio personaggio = new Personaggio(nome);
 		mappa = new Mappa(personaggio,c);
 		start(mappa,personaggio);
 		
@@ -108,6 +128,8 @@ public class GiocoDiRuolo {
 				
 			}
 			//una volta calcolati eventuali danni aggiorna la nuova posizione del giocatore (attuale)
+			
+			getMsg(attuale,scelta);
 			if(attuale.getTipo().equals("branch")||attuale.getTipo().equals("effect")) {
 				attuale = mappa.getPercorso().get(scelta);
 			}else if(attuale.getTipo().equals("empty")){
@@ -118,13 +140,12 @@ public class GiocoDiRuolo {
 	//metodo per capire se ha scelto la strada corretta ad un bivio (se deve scegliere tra 1 e 2 e mette 8 => return false
 	public static boolean accettabile(Casella attuale,int val) {
 		for(Integer x:attuale.getSucc()) {
-			if(x==val) return true;
+			if(x==val)return true;
 		}
 		return false;
 	}
 	//calcola i danni da applicare dopo un effect
 	public static boolean checkDanni(int scelta ) {
-		System.out.println(scelta);
 		if(mappa.getPercorso().get(scelta).getTipo().equals("effect")) {
 			return true;
 		}return false;
@@ -142,5 +163,13 @@ public class GiocoDiRuolo {
 			}
 		}
 		if(!x) System.out.println("Non esiste nessun file con quella parte di nome");
+	}
+	
+	public static void getMsg(Casella attuale, int scelta) {
+		for(int i = 0;i<attuale.getSucc().size();i++) {
+			if(attuale.getSucc().get(i) == scelta) {
+				System.out.println(attuale.getMessaggi().get(i));
+			}
+		}
 	}
 }
