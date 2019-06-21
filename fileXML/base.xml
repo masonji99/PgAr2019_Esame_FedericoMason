@@ -73,7 +73,7 @@
             <option destination="7" lifepoints="1">
                 Segui la strada.
             </option>
-            <option destination="7" lifepoints="-100">
+            <option destination="6" lifepoints="-100">
                 Attraversa il bosco in fiamme.
             </option>
         </cell>

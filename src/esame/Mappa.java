@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Mappa {
 	private final static int INIZIALE = 0;
-	int numCaselle;
-	Casella iniziale;
-	Casella attuale;
-	Personaggio personaggio;
-	ArrayList<Casella> percorso;
+	private int numCaselle;
+	private Casella iniziale;
+	private Casella attuale;
+	private Personaggio personaggio;
+	private ArrayList<Casella> percorso;
 	
 	public Mappa(Personaggio personaggio,ArrayList<Casella> percorso) {
 		this.personaggio = personaggio;

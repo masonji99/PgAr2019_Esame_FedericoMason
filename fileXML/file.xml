@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rpg>
+    <!--
+        Programma Arnaldo 2019 - Esame
+        File XML di testing per il modulo A2 - nucleo 3
+        Il seguente documento è stato prodotto da Daniele Della Morte per lo Student Branch IEEE dell'Università degli Studi di Brescia.
+    -->
+    <map size="5" title="mappa di prova per la prima parte">
+        <cell id="0" type="empty">
+            <description>
+                Benvenuto nella Partita Generica Ed Inutile.
+            </description>
+            <option destination="1">
+                Qui non hai molte scelte: fai il prossimo passo!
+            </option>
+        </cell>
+        <cell id="1" type="branch" options="2">
+            <description>
+                Sei arrivato ad uno svincolo: congratulazioni!
+            </description>
+            <option destination="2">
+                Potremmo prendere questa via.
+            </option>
+            <option destination="3">
+                Potremmo prendere quest'altra via (?)
+            </option>
+        </cell>
+        <cell id="2" type="empty">
+            <description>
+                Solo una strada... di nuovo.
+            </description>
+            <option destination="4">
+                Ehi un bivio!
+            </option>
+        </cell>
+        <cell id="3" type="effect">
+            <description>
+                Ok, qui ci sono 2 strade.
+            </description>
+            <option destination="2" lifepoints ="-5">
+                La strada ci porta verso un boschetto.
+            </option>
+	    <option destination="4" lifepoints ="-10">
+                La strada ci porta verso un prato.
+            </option>
+        </cell>
+        <cell id="5" type="empty" >
+            <description>
+                Dritti alla vittoria!!!
+            </description>
+            <option destination="5">
+                FINISH
+            </option>
+        </cell>
+        <cell id="5" type="end">
+            <description>
+                Entri nella caverna: c'è un orso. Hai appena guadagnato un punto vita, ma l'orso ti mangia. Ti aspettavi un happy ending? Comunque hai vinto, sei arrivato alla fine.
+            </description>
+        </cell>
+    </map>
+</rpg>

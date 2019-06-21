@@ -10,12 +10,13 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 public class LetturaXML {
-	XMLInputFactory xmlif = null;
-	XMLStreamReader xmlr = null;
-	String nomeFile = "";
+	private XMLInputFactory xmlif = null;
+	private XMLStreamReader xmlr = null; //stream per la lettura del file XML
+	private String nomeFile = "";
+	
 	public LetturaXML(String nomeFile) throws FileNotFoundException, XMLStreamException {
-			this.nomeFile ="fileXML/".concat(nomeFile).trim();
-			System.out.println(this.nomeFile);
+			this.nomeFile ="fileXML/".concat(nomeFile).trim(); /*concatena il nome della cartella dove dovrebbero
+			essere i file XML e il nome dato dall'utente ed effettua il caricamento da quel file*/
 			xmlif = XMLInputFactory.newInstance();
 			xmlr = xmlif.createXMLStreamReader(this.nomeFile,new FileInputStream(this.nomeFile));
 	}

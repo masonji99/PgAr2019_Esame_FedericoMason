@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Casella {
+	
+	/*Ogni casella presenta il suo id, successivi ovvero la lista degli id a cui è collegata quella casella
+	 
+	 * */
 	private int id;
 	private ArrayList<Integer> successivi;
 	private ArrayList<Integer> danni;
